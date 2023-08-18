@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:jc_qualif_flutter/pages/login.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const QualifFlutter());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class QualifFlutter extends StatelessWidget {
+  const QualifFlutter({super.key});
 
   // This widget is the root of your application.
   @override
