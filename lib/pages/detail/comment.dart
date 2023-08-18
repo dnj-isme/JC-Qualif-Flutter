@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jc_qualif_flutter/model/comment.dart';
+import 'package:jc_qualif_flutter/utils/utils.dart';
 
 class CommentSection extends StatefulWidget {
   final List<Comment> comments;
@@ -10,32 +11,34 @@ class CommentSection extends StatefulWidget {
 }
 
 class _CommentSectionState extends State<CommentSection> {
-  TextEditingController aliasController = TextEditingController();
-  TextEditingController commentController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    TextField aliasTxt = TextField(
-        autocorrect: true,
-        decoration: const InputDecoration(
-            hintText: "Alias",
-            labelText: "Insert Alias",
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5))
-            )
-        ),
-        controller: aliasController,
-    );
-
     return SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const SizedBox(height: 36),
           Text(
             "Comments (${widget.comments.length})",
             style: const TextStyle(fontSize: 24),
           ),
           const SizedBox(height: 10),
-
+          ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: widget.comments.length,
+            itemBuilder: (context, index) {
+              Comment curr = widget.comments.elementAt(index);
+              return ListTile(
+                title: Text(curr.username),
+                subtitle: Text("${curr.dateTime.toString()}\r\n"
+                    "${curr.comment}", maxLines: 5),
+                isThreeLine: true,
+                leading: const Icon(Icons.account_circle),
+              );
+            },
+          ),
         ],
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jc_qualif_flutter/model/product.dart';
+import 'package:jc_qualif_flutter/pages/detail/product_detail.dart';
+import 'package:jc_qualif_flutter/utils/utils.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({Key? key}) : super(key: key);
@@ -29,7 +31,9 @@ class _ProductsPageState extends State<ProductsPage> {
             itemBuilder: (context, index) {
               Product curr = sampleProducts.elementAt(index);
               return ListTile(
-                onTap: () {},
+                onTap: () {
+                  navigate(context, ProductDetailPage(product: curr), true);
+                },
                 title: Text(curr.name),
                 subtitle: Text("Rp. ${curr.price}"),
                 leading: Image.network(curr.image)

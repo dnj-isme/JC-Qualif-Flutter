@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jc_qualif_flutter/main.dart';
 import 'package:jc_qualif_flutter/pages/main/account.dart';
 import 'package:jc_qualif_flutter/pages/main/home.dart';
 import 'package:jc_qualif_flutter/pages/main/products.dart';
